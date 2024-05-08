@@ -2,21 +2,28 @@ import math
 
 import numpy as np
 
-from regression_model.predict import make_prediction
+from classification_model.predict import make_prediction
+from sklearn.metrics import accuracy_score
+from classification_model.config.core import config
 
 
 def test_make_prediction(sample_input_data):
+    y_true = sample_input_data[config.model_config.target]
+    sample_input_data.drop(columns=[config.model_config.target],inplace=True)
+    print(sample_input_data.columns)
     # Given
-    expected_first_prediction_value = 113422
-    expected_no_predictions = 1449
+    expected_no_predictions = 262
 
     # When
-    result = make_prediction(input_data=sample_input_data)
+    result = make_prediction(data_input=sample_input_data)
+    print(result.get("errors"))
 
     # Then
     predictions = result.get("predictions")
-    assert isinstance(predictions, list)
-    assert isinstance(predictions[0], np.float64)
+    assert isinstance(predictions, np.ndarray)
+    assert isinstance(predictions[0], np.int64)
     assert result.get("errors") is None
     assert len(predictions) == expected_no_predictions
-    assert math.isclose(predictions[0], expected_first_prediction_value, abs_tol=100)
+    _predictions = list(predictions)
+    accuracy = accuracy_score(_predictions, y_true)
+    assert accuracy > 0.6
