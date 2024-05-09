@@ -6,7 +6,7 @@ from pathlib import Path
 from setuptools import find_packages, setup
 
 # Package meta-data.
-NAME = 'classification-model-titanic'
+NAME = 'classification-model-titanic-david-anthony'
 DESCRIPTION = "Classification model package from Train In Data."
 URL = "https://github.com/davidanthony-ai/Deployment-titanic-package-MLOPS"
 EMAIL = "daouedraogo@gmail.com"
@@ -47,7 +47,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude=("tests",)),
-    package_data={"classification-model-titanic": ["VERSION"]},
+    package_data={"classification-model-titanic-david-anthony": ["VERSION"]},
     install_requires=list_reqs(),
     extras_require={},
     include_package_data=True,
