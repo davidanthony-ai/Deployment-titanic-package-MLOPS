@@ -83,6 +83,15 @@ def save_pipeline(*, pipeline_to_persist: Pipeline) -> None:
     remove_old_pipelines(files_to_keep=[save_file_name])
     joblib.dump(pipeline_to_persist, save_path)
 
+def save_feature_importance(*, features_imp: dict) -> None:
+    """Features importance saving.
+    Saves the versioned  
+    """
+    # Prepare versioned save file name
+    save_file_name = f"{config.app_config.feature_importance_save}{_version}.json"
+    save_path = TRAINED_MODEL_DIR / save_file_name
+
+    joblib.dump(features_imp, save_path)
 
 def load_pipeline(*, file_name: str) -> Pipeline:
     """Load a persisted pipeline."""

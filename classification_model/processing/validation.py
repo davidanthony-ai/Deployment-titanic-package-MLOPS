@@ -6,7 +6,7 @@ import pandas as pd
 from pydantic import BaseModel, ValidationError
 
 from classification_model.config.core import config
-from classification_model.processing.data_manager import pre_processing
+#from classification_model.processing.data_manager import pre_processing
 
 
 

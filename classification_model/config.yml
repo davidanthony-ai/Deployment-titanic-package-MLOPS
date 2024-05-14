@@ -2,12 +2,14 @@
 package_name: classification_model
 
 # Data Files
-training_data_file: train_titanic.csv
-test_data_file: test_titanic.csv
+#training_data_file: train_titanic.csv
+#test_data_file: test_titanic.csv
+titanic_data: titanic_data.csv
 
 # Pipeline config
 pipeline_name: classification_model
 pipeline_save_file: classification_model_output_v
+feature_importance_save: feature_importance_model_output
 
 # Variables
 NUMERICAL_VARIABLES:

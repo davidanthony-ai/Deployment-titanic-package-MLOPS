@@ -20,9 +20,9 @@ class AppConfig(BaseModel):
     """
 
     package_name: str
-    training_data_file: str
-    test_data_file: str
     pipeline_save_file: str
+    titanic_data: str
+    feature_importance_save : str
 
 
 class ModelConfig(BaseModel):
