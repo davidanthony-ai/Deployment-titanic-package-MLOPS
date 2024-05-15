@@ -34,10 +34,11 @@ def run_training() -> None:
     importance_dict = {}
     for i in range(len(labels_idx)):
         importance_dict[labels_idx[i]] = importance_val[:,i].tolist()
-    save_feature_importance(features_imp=importance_dict)
-
     # persist trained model
     save_pipeline(pipeline_to_persist=titanic_pipe)
+
+    # Save feature importance
+    save_feature_importance(features_imp=importance_dict)
 
 
 if __name__ == "__main__":

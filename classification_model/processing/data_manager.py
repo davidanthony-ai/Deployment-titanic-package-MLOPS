@@ -10,7 +10,7 @@ import numpy as np
 from classification_model import __version__ as _version
 from classification_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
 import re
-
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -90,8 +90,14 @@ def save_feature_importance(*, features_imp: dict) -> None:
     # Prepare versioned save file name
     save_file_name = f"{config.app_config.feature_importance_save}{_version}.json"
     save_path = TRAINED_MODEL_DIR / save_file_name
+    #print(save_path)
 
-    joblib.dump(features_imp, save_path)
+    # Write data to the JSON file
+    with open(save_path, "w") as json_file:
+        #print(json_file)
+        #print(features_imp)
+        json.dump(features_imp, json_file)
+    #joblib.dump(features_imp, save_path)
 
 def load_pipeline(*, file_name: str) -> Pipeline:
     """Load a persisted pipeline."""
